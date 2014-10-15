@@ -1,3 +1,8 @@
+tor:
+    build: ./tor
+    ports:
+        - "172.17.42.1:9050:9050"
+        - "172.17.42.1:9053:9053"
 bitlbee:
     build: ./bitlbee
     ports:
