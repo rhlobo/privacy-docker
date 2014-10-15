@@ -1,0 +1,4 @@
+bitlbee:
+    build: ./bitlbee
+    ports:
+        - "172.17.42.1:6667:6667"
