@@ -9,3 +9,9 @@ bitlbee:
         - "172.17.42.1:6667:6667"
     links:
         - tor:tor
+privoxy:
+    build: ./privoxy
+    ports:
+        - "172.17.42.1:8118:8118"
+    links:
+        - tor:tor
