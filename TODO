@@ -1,0 +1,12 @@
+Add Polipo caching proxy
+    http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/
+
+Create a "rotating proxy", load balancing requests between multi proxy servers
+    https://github.com/mattes/rotating-proxy
+    http://www.haproxy.org/
+
+Use Iceweasel and DnsMasq
+    https://github.com/jcsaaddupuy/docker-torbox
+
+Create a TOR relay / TOR Hidden service
+    https://github.com/hsaito/docker-torbox
