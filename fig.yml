@@ -4,12 +4,19 @@ tor:
         - "127.0.0.1:9050:9050"
         - "127.0.0.1:9053:9053"
 
+polipo:
+    build: ./polipo
+    ports:
+        - "127.0.0.1:8123:8123"
+    links:
+        - tor:tor
+
 privoxy:
     build: ./privoxy
     ports:
         - "127.0.0.1:8118:8118"
     links:
-        - tor:tor
+        - polipo:polipo
 
 bitlbee:
     build: ./bitlbee

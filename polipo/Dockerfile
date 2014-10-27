@@ -16,19 +16,20 @@ CMD ["/sbin/my_init"]
 
 # Service Setup
 RUN apt-get update --quiet
-RUN apt-get install --yes --quiet privoxy
+RUN apt-get install --yes --quiet polipo
 
 # Service Configuration
-ADD ./files/config /etc/privoxy/config
-RUN chmod +r /etc/privoxy/config
+ADD ./files/config /etc/polipo/config
+RUN chmod +r /etc/polipo/config
+RUN adduser --disabled-password --home=/home/polipo --gecos "" polipo
 
 # Service Initialization
-RUN mkdir /etc/service/privoxy
-ADD files/privoxy.sh /etc/service/privoxy/run
-RUN chmod +x /etc/service/privoxy/run
+RUN mkdir /etc/service/polipo
+ADD files/polipo.sh /etc/service/polipo/run
+RUN chmod +x /etc/service/polipo/run
 
 # Service Exposure
-EXPOSE 8118
+EXPOSE 8123
 
 # Clean up APT
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

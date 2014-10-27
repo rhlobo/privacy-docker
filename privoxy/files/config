@@ -1218,8 +1218,9 @@ buffer-limit 4096
 #        forward  /                        parent-proxy.example.org:8000
 #        forward  ipv6-server.example.org  .
 #        forward  <[2-3][0-9a-f][0-9a-f][0-9a-f]:*>   .
-#
-#
+
+forward / polipo:8123
+
 #  5.2. forward-socks4, forward-socks4a and forward-socks5
 #  ========================================================
 #
@@ -1291,18 +1292,17 @@ buffer-limit 4096
 #      To chain Privoxy and Tor, both running on the same system,
 #      you would use something like:
 #
-forward-socks5 / tor:9050 .
-# forward-socks5 / 172.17.42.1:9050 .
+#        forward-socks5 / localhost:9050 .
 #
 #
 #      The public Tor network can't be used to reach your local network,
 #      if you need to access local servers you therefore might want
 #      to make some exceptions:
 #
-forward         192.168.*.*/     .  
-forward         10.*.*.*/        .  
-forward         127.*.*.*/       .
-forward         172.17.*.*/       .
+#        forward 192.168.*.*/ .
+#        forward 10.*.*.*/ .
+#        forward 127.*.*.*/ .
+#        forward 172.17.*.*/ .
 #
 #
 #      Unencrypted connections to systems in these address ranges will
@@ -1317,8 +1317,14 @@ forward         172.17.*.*/       .
 #
 #       forward           localhost/     .
 #
+
 # forward-socks4a / tor:9050 .
-#
+# forward-socks5 / tor:9050 .
+forward 192.168.*.*/ .
+forward 10.*.*.*/ .
+forward 127.*.*.*/ .
+forward 172.17.*.*/ .
+
 #  5.3. forwarded-connect-retries
 #  ===============================
 #
