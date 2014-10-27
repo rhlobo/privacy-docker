@@ -6,8 +6,6 @@ tor:
 
 polipo:
     build: ./polipo
-    ports:
-        - "127.0.0.1:8123:8123"
     links:
         - tor:tor
 
